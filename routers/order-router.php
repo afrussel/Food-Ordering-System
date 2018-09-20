@@ -22,11 +22,11 @@ $total = $_POST['total'];
 			$con->query($sql) === TRUE;		
 			}
 		}
-		if($_POST['payment_type'] == 'Wallet'){
-		$balance = $balance - $total;
-		$sql = "UPDATE wallet_details SET balance = $balance WHERE wallet_id = $wallet_id;";
-		$con->query($sql) === TRUE;
-		}
+		// if($_POST['payment_type'] == 'Wallet'){
+		// $balance = $balance - $total;
+		// $sql = "UPDATE wallet_details SET balance = $balance WHERE wallet_id = $wallet_id;";
+		// $con->query($sql) === TRUE;
+		// }
 			header("location: ../orders.php");
 	}
 
