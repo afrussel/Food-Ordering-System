@@ -7,20 +7,24 @@ if($_SESSION['customer_sid']==session_id())
 {
 		if($_POST['payment_type'] == 'Wallet'){
   		$_POST['cc_number'] = str_replace('-', '', $_POST['cc_number']);
-  		$_POST['cc_number'] = str_replace(' ', '', $_POST['cc_number']); 
+  		$card = str_replace(' ', '', $_POST['cc_number']); 
   		$_POST['cvv_number'] = (int)str_replace('-', '', $_POST['cvv_number']);
   		$sql1 = mysqli_query($con, "SELECT * FROM wallet_details where wallet_id = $wallet_id");
   		while($row1 = mysqli_fetch_array($sql1)){
-  			$card = $row1['number'];
-  			$cvv = $row1['cvv'];
+
+        $sql1 = mysqli_query($con, "INSERT INTO payment_master (Payment_Type, Card_Number, Customer_ID) values (1,$card,$user_id)");
+        $con->query($sql1);
   			// if($card == $_POST['cc_number'] && $cvv==$_POST['cvv_number'])
   			$continue=1;
   			// else
   			// 	header("location:index.php");
   		}
 		}
-		else
+		else{
 			$continue=1;
+      $sql1 = mysqli_query($con, "INSERT INTO payment_master (Payment_Type, Card_Number, Customer_ID) values (0,0,$user_id)");
+        $con->query($sql1);
+    }
 }
 
 $result = mysqli_query($con, "SELECT * FROM users where id = $user_id");
