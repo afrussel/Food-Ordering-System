@@ -16,7 +16,7 @@ if($_SESSION['admin_sid']==session_id())
 			$continue=1;
 		}
 		else
-			$continue = 0;	
+			$continue = 0;
 }
 
 if($continue){
@@ -45,7 +45,7 @@ if($continue){
   <!-- CORE CSS-->
   <link href="css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection">
   <link href="css/style.min.css" type="text/css" rel="stylesheet" media="screen,projection">
-  <!-- Custome CSS-->    
+  <!-- Custome CSS-->
   <link href="css/custom/custom.min.css" type="text/css" rel="stylesheet" media="screen,projection">
 
   <link href="js/plugins/perfect-scrollbar/perfect-scrollbar.css" type="text/css" rel="stylesheet" media="screen,projection">
@@ -64,39 +64,39 @@ if($continue){
   .input-field label.active{
       width:100%;
   }
-  .left-alert input[type=text] + label:after, 
-  .left-alert input[type=password] + label:after, 
-  .left-alert input[type=email] + label:after, 
-  .left-alert input[type=url] + label:after, 
+  .left-alert input[type=text] + label:after,
+  .left-alert input[type=password] + label:after,
+  .left-alert input[type=email] + label:after,
+  .left-alert input[type=url] + label:after,
   .left-alert input[type=time] + label:after,
-  .left-alert input[type=date] + label:after, 
-  .left-alert input[type=datetime-local] + label:after, 
-  .left-alert input[type=tel] + label:after, 
-  .left-alert input[type=number] + label:after, 
-  .left-alert input[type=search] + label:after, 
+  .left-alert input[type=date] + label:after,
+  .left-alert input[type=datetime-local] + label:after,
+  .left-alert input[type=tel] + label:after,
+  .left-alert input[type=number] + label:after,
+  .left-alert input[type=search] + label:after,
   .left-alert textarea.materialize-textarea + label:after{
       left:0px;
   }
-  .right-alert input[type=text] + label:after, 
-  .right-alert input[type=password] + label:after, 
-  .right-alert input[type=email] + label:after, 
-  .right-alert input[type=url] + label:after, 
+  .right-alert input[type=text] + label:after,
+  .right-alert input[type=password] + label:after,
+  .right-alert input[type=email] + label:after,
+  .right-alert input[type=url] + label:after,
   .right-alert input[type=time] + label:after,
-  .right-alert input[type=date] + label:after, 
-  .right-alert input[type=datetime-local] + label:after, 
-  .right-alert input[type=tel] + label:after, 
-  .right-alert input[type=number] + label:after, 
-  .right-alert input[type=search] + label:after, 
+  .right-alert input[type=date] + label:after,
+  .right-alert input[type=datetime-local] + label:after,
+  .right-alert input[type=tel] + label:after,
+  .right-alert input[type=number] + label:after,
+  .right-alert input[type=search] + label:after,
   .right-alert textarea.materialize-textarea + label:after{
       right:70px;
   }
-  </style> 
+  </style>
 </head>
 
 <body>
   <!-- Start Page Loading -->
   <div id="loader-wrapper">
-      <div id="loader"></div>        
+      <div id="loader"></div>
       <div class="loader-section section-left"></div>
       <div class="loader-section section-right"></div>
   </div>
@@ -110,13 +110,13 @@ if($continue){
         <div class="navbar-fixed">
             <nav class="navbar-color">
                 <div class="nav-wrapper">
-                    <ul class="left">                      
+                    <ul class="left">
                       <li><h1 class="logo-wrapper"><a href="index.php" class="brand-logo darken-1"><img src="images/materialize-logo.png" alt="logo"></a> <span class="logo-text">Logo</span></h1></li>
                     </ul>
-                    <ul class="right hide-on-med-and-down">                        
+                    <ul class="right hide-on-med-and-down">
                         <li><a href="#" class="waves-effect waves-block waves-light"><i class="mdi-editor-attach-money"></i></a>
                         </li>
-                    </ul>					
+                    </ul>
                 </div>
             </nav>
         </div>
@@ -190,9 +190,9 @@ if($continue){
                             </div>
                         </li>
                     </ul>
-                </li>				
+                </li>
             <li class="bold"><a href="details.php" class="waves-effect waves-cyan"><i class="mdi-social-person"></i> Edit Details</a>
-            </li>				
+            </li>
         </ul>
         <a href="#" data-activates="slide-out" class="sidebar-collapse btn-floating btn-medium waves-effect waves-light hide-on-large-only cyan"><i class="mdi-navigation-menu"></i></a>
         </aside>
@@ -222,25 +222,25 @@ if($continue){
           <div class="divider"></div>
           <!--editableTable-->
 <div class="section">
-                                <?php 
+                                <?php
 								echo '<ul id="task-card" class="collection with-header">
 									<div id="card-alert" class="card cyan">
 										<div class="card-content white-text">
 										<span class="card-title white-text darken-1">Ticket No. '.$ticket_id.'</span>
 										<p><strong>Subject: </strong>'.$subject.'</p>
-										<p><strong>Status: </strong>'.$status.'</p>	
-										<p><strong>Type: </strong>'.$type.'</p>											
+										<p><strong>Status: </strong>'.$status.'</p>
+										<p><strong>Type: </strong>'.$type.'</p>
 										</div>
 										<div class="card-action cyan">
 										<form method="post" action="routers/ticket-status.php">
-										<input type="hidden" name="ticket_id" value="'.$ticket_id.'">										
+										<input type="hidden" name="ticket_id" value="'.$ticket_id.'">
 										<input type="hidden" name="status" value="'.($status != 'Closed' ? 'Closed' : 'Open').'">
 										<button class="waves-effect waves-light deep-orange btn white-text" type="submit" name="action">'
 										.($status != 'Closed' ? 'Close<i class="mdi-navigation-close"></i>' : 'Reopen<i class="mdi-navigation-check"></i>').'
 										</button>
 										</form>
 										</div>
-									</div>										
+									</div>
                                 </ul>';
 								echo '<ul id="issues-collection" class="collection">';
 								$sql1 = mysqli_query($con, "SELECT * from ticket_details WHERE ticket_id = $ticket_id;");
@@ -249,14 +249,14 @@ if($continue){
 									if(mysqli_num_rows(mysqli_query($con,$sql2))>0){
 										$row2  = $con->query($sql2)->fetch_assoc();
 										$name = $row2['name'];
-										$role1 = $row2['role'];										
+										$role1 = $row2['role'];
 									}
 								  echo '
 								  <li class="collection-item avatar">
-									  <i class="'.($role1=='Administrator' ? 'mdi-action-star-rate' : 'mdi-social-person').' cyan circle"></i>
+									  <i class="'.($role1=='Employee' ? 'mdi-action-star-rate' : 'mdi-social-person').' cyan circle"></i>
 									  <span class="collection-header"> '.$name.'</span>
 									  <p><strong>Date:</strong> '.$row1['date'].'</p>
-									  <p><strong>Role:</strong> '.$role1.'</p>					                               
+									  <p><strong>Role:</strong> '.$role1.'</p>
 									  <a href="#" class="secondary-content">
 									  <i class="mdi-action-grade"></i></a>
 								  </li>
@@ -271,7 +271,7 @@ if($continue){
 							  echo '
 							  <div class="card-panel">
                   <div class="row">
-                    <form class="formValidate" id="formValidate" method="post" action="routers/ticket-message.php" novalidate="novalidate" class="col s12">					  
+                    <form class="formValidate" id="formValidate" method="post" action="routers/ticket-message.php" novalidate="novalidate" class="col s12">
                       <div class="row">
 					  <input type="hidden" name="role" value="'.$role.'">
 					  <input type="hidden" name="ticket_id" value="'.$ticket_id.'">
@@ -328,18 +328,18 @@ if($continue){
     <!-- ================================================
     Scripts
     ================================================ -->
-    
+
     <!-- jQuery Library -->
-    <script type="text/javascript" src="js/plugins/jquery-1.11.2.min.js"></script>    
+    <script type="text/javascript" src="js/plugins/jquery-1.11.2.min.js"></script>
     <!--angularjs-->
     <script type="text/javascript" src="js/plugins/angular.min.js"></script>
     <!--materialize js-->
     <script type="text/javascript" src="js/materialize.min.js"></script>
     <script type="text/javascript" src="js/plugins/jquery-validation/jquery.validate.min.js"></script>
     <script type="text/javascript" src="js/plugins/jquery-validation/additional-methods.min.js"></script>
-    
+
     <!--scrollbar-->
-    <script type="text/javascript" src="js/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script> 
+    <script type="text/javascript" src="js/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     <!--plugins.js - Some Specific JS codes for Plugin Settings-->
     <script type="text/javascript" src="js/plugins.min.js"></script>
     <!--custom-script.js - Add your own theme custom JS-->
@@ -350,15 +350,15 @@ if($continue){
             message: {
                 required: true,
                 minlength: 5,
-				maxlength: 300	
-            },		
+				maxlength: 300
+            },
         },
         messages: {
             message: {
                 required: "Please provide a reply.",
                 minlength: "Minimum 5 characters are required.",
-                maxlength: "Maximum 3000 characters are required."				
-            },			
+                maxlength: "Maximum 3000 characters are required."
+            },
         },
         errorElement : 'div',
         errorPlacement: function(error, element) {
@@ -370,7 +370,7 @@ if($continue){
           }
         }
      });
-    </script>	
+    </script>
 </body>
 
 </html>
@@ -380,7 +380,7 @@ if($continue){
 	{
 		if($_SESSION['customer_sid']==session_id())
 		{
-			header("location:tickets.php");		
+			header("location:tickets.php");
 		}
 		else{
 			header("location:login.php");

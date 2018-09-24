@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.5.2
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Mar 30, 2017 at 05:22 PM
--- Server version: 10.1.21-MariaDB
--- PHP Version: 5.6.30
+-- Host: localhost
+-- Generation Time: Sep 24, 2018 at 03:28 PM
+-- Server version: 10.1.35-MariaDB
+-- PHP Version: 7.2.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -19,6 +21,65 @@ SET time_zone = "+00:00";
 --
 -- Database: `food`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `customer`
+--
+
+CREATE TABLE `customer` (
+  `id` int(11) NOT NULL,
+  `role` varchar(15) NOT NULL DEFAULT 'Customer',
+  `name` varchar(15) NOT NULL,
+  `username` varchar(10) NOT NULL,
+  `password` varchar(16) NOT NULL,
+  `email` varchar(35) DEFAULT NULL,
+  `address` varchar(300) DEFAULT NULL,
+  `contact` bigint(11) NOT NULL,
+  `verified` tinyint(1) NOT NULL DEFAULT '0',
+  `deleted` tinyint(4) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `customer`
+--
+
+INSERT INTO `customer` (`id`, `role`, `name`, `username`, `password`, `email`, `address`, `contact`, `verified`, `deleted`) VALUES
+(2, 'Customer', 'Customer 1', 'user1', 'pass1', 'mail2@example.com', 'Address 2', 9898000001, 1, 0),
+(3, 'Customer', 'Customer 2', 'user2', 'pass2', 'mail3@example.com', 'Address 3', 9898000002, 1, 0),
+(4, 'Customer', 'Customer 3', 'user3', 'pass3', '', '', 9898000003, 0, 0),
+(5, 'Customer', 'Customer 4', 'user4', 'pass4', '', '', 9898000004, 0, 1),
+(6, 'Customer', 'Milind Shah', 'milind', 'milind', NULL, NULL, 9876543210, 1, 0),
+(7, 'Customer', 'prtk', 'prtk', 'prtk1910', NULL, NULL, 9619775837, 0, 0),
+(8, 'Customer', 'test', 'testcustom', '1234', 'test@test.com', 'Mumbai', 9876543210, 1, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `employee`
+--
+
+CREATE TABLE `employee` (
+  `id` int(11) NOT NULL,
+  `role` varchar(15) NOT NULL DEFAULT 'Customer',
+  `name` varchar(15) NOT NULL,
+  `username` varchar(10) NOT NULL,
+  `password` varchar(16) NOT NULL,
+  `email` varchar(35) DEFAULT NULL,
+  `address` varchar(300) DEFAULT NULL,
+  `contact` bigint(11) NOT NULL,
+  `verified` tinyint(1) NOT NULL DEFAULT '0',
+  `deleted` tinyint(4) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `employee`
+--
+
+INSERT INTO `employee` (`id`, `role`, `name`, `username`, `password`, `email`, `address`, `contact`, `verified`, `deleted`) VALUES
+(1, 'Administrator', 'Admin 1', 'root', 'toor', '', 'Address 1', 9898000000, 1, 0),
+(7, 'Employee', 'test', 'testemp', '1234', 'test@test.com', 'Mumbai', 9877654321, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -67,12 +128,15 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `customer_id`, `address`, `description`, `date`, `payment_type`, `total`, `status`, `deleted`) VALUES
-(1, 2, 'Address 2', 'Sample Description 1', '2017-03-28 17:32:41', 'Wallet', 150, 'Yet to be delivered', 0),
+(1, 2, 'Address 2', 'Sample Description 1', '2017-03-28 17:32:41', 'Wallet', 150, 'Delivered', 0),
 (2, 2, 'New address 2', '', '2017-03-28 17:43:05', 'Wallet', 130, 'Cancelled by Customer', 1),
-(3, 3, 'Address 3', 'Sample Description 2', '2017-03-28 19:49:33', 'Cash On Delivery', 130, 'Yet to be delivered', 0),
+(3, 3, 'Address 3', 'Sample Description 2', '2017-03-28 19:49:33', 'Cash On Delivery', 130, 'Delivered', 0),
 (4, 3, 'Address 3', '', '2017-03-28 19:52:01', 'Cash On Delivery', 130, 'Cancelled by Customer', 1),
 (5, 3, 'New Address 3', '', '2017-03-28 20:47:28', 'Wallet', 285, 'Paused', 0),
-(6, 3, 'New Address 3', '', '2017-03-30 00:43:31', 'Wallet', 325, 'Cancelled by Customer', 1);
+(6, 3, 'New Address 3', '', '2017-03-30 00:43:31', 'Wallet', 325, 'Cancelled by Customer', 1),
+(7, 2, 'Address 2', '', '2018-09-20 10:26:11', 'Cash On Delivery', 105, 'Cancelled by Customer', 1),
+(8, 6, 'aaaaa', '', '2018-09-20 19:07:37', 'Wallet', 85, 'Yet to be delivered', 0),
+(9, 8, 'Mumbai', '', '2018-09-24 18:15:01', 'Cash On Delivery', 345, 'Delivered', 0);
 
 -- --------------------------------------------------------
 
@@ -106,7 +170,16 @@ INSERT INTO `order_details` (`id`, `order_id`, `item_id`, `quantity`, `price`) V
 (11, 5, 5, 1, 20),
 (12, 6, 2, 5, 225),
 (13, 6, 3, 3, 60),
-(14, 6, 5, 2, 40);
+(14, 6, 5, 2, 40),
+(15, 7, 2, 1, 45),
+(16, 7, 3, 2, 40),
+(17, 7, 5, 1, 20),
+(18, 8, 2, 1, 45),
+(19, 8, 3, 1, 20),
+(20, 8, 5, 1, 20),
+(21, 9, 2, 5, 225),
+(22, 9, 3, 4, 80),
+(23, 9, 5, 2, 40);
 
 -- --------------------------------------------------------
 
@@ -152,39 +225,7 @@ CREATE TABLE `ticket_details` (
 
 INSERT INTO `ticket_details` (`id`, `ticket_id`, `user_id`, `description`, `date`) VALUES
 (1, 1, 2, 'New Description for Subject 1', '2017-03-30 18:08:51'),
-(2, 1, 2, 'Reply-1 for Subject 1', '2017-03-30 19:59:09'),
-(3, 1, 1, 'Reply-2 for Subject 1 from Administrator.', '2017-03-30 20:35:39'),
-(4, 1, 1, 'Reply-3 for Subject 1 from Administrator.', '2017-03-30 20:49:35');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `users`
---
-
-CREATE TABLE `users` (
-  `id` int(11) NOT NULL,
-  `role` varchar(15) NOT NULL DEFAULT 'Customer',
-  `name` varchar(15) NOT NULL,
-  `username` varchar(10) NOT NULL,
-  `password` varchar(16) NOT NULL,
-  `email` varchar(35) NULL,
-  `address` varchar(300) NULL,
-  `contact` bigint(11) NOT NULL,
-  `verified` tinyint(1) NOT NULL DEFAULT '0',
-  `deleted` tinyint(4) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`id`, `role`, `name`, `username`, `password`, `email`, `address`, `contact`, `verified`, `deleted`) VALUES
-(1, 'Administrator', 'Admin 1', 'root', 'toor', '', 'Address 1', 9898000000, 1, 0),
-(2, 'Customer', 'Customer 1', 'user1', 'pass1', 'mail2@example.com', 'Address 2', 9898000001, 1, 0),
-(3, 'Customer', 'Customer 2', 'user2', 'pass2', 'mail3@example.com', 'Address 3', 9898000002, 1, 0),
-(4, 'Customer', 'Customer 3', 'user3', 'pass3', '', '', 9898000003, 0, 0),
-(5, 'Customer', 'Customer 4', 'user4', 'pass4', '', '', 9898000004, 0, 1);
+(2, 1, 2, 'Reply-1 for Subject 1', '2017-03-30 19:59:09');
 
 -- --------------------------------------------------------
 
@@ -202,11 +243,13 @@ CREATE TABLE `wallet` (
 --
 
 INSERT INTO `wallet` (`id`, `customer_id`) VALUES
-(1, 1),
 (2, 2),
 (3, 3),
 (4, 4),
-(5, 5);
+(5, 5),
+(6, 6),
+(7, 7),
+(8, 8);
 
 -- --------------------------------------------------------
 
@@ -227,15 +270,33 @@ CREATE TABLE `wallet_details` (
 --
 
 INSERT INTO `wallet_details` (`id`, `wallet_id`, `number`, `cvv`, `balance`) VALUES
-(1, 1, '6155247490533921', 983, 3430),
 (2, 2, '1887587142382050', 772, 1850),
 (3, 3, '4595809639046830', 532, 1585),
 (4, 4, '5475856443351234', 521, 2000),
-(5, 5, '9076633115663264', 229, 2000);
+(5, 5, '9076633115663264', 229, 2000),
+(6, 6, '2609396823159891', 324, 2000),
+(7, 7, '2147448018749784', 533, 2000),
+(8, 8, '836253277402502', 477, 2000);
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `customer`
+--
+ALTER TABLE `customer`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `username` (`username`),
+  ADD UNIQUE KEY `id` (`id`);
+
+--
+-- Indexes for table `employee`
+--
+ALTER TABLE `employee`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `username` (`username`),
+  ADD UNIQUE KEY `id` (`id`);
 
 --
 -- Indexes for table `items`
@@ -278,14 +339,6 @@ ALTER TABLE `ticket_details`
   ADD KEY `user_id` (`user_id`);
 
 --
--- Indexes for table `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `username` (`username`),
-  ADD UNIQUE KEY `id` (`id`);
-
---
 -- Indexes for table `wallet`
 --
 ALTER TABLE `wallet`
@@ -306,45 +359,59 @@ ALTER TABLE `wallet_details`
 --
 
 --
+-- AUTO_INCREMENT for table `customer`
+--
+ALTER TABLE `customer`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `employee`
+--
+ALTER TABLE `employee`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
 -- AUTO_INCREMENT for table `items`
 --
 ALTER TABLE `items`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
 --
 -- AUTO_INCREMENT for table `order_details`
 --
 ALTER TABLE `order_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+
 --
 -- AUTO_INCREMENT for table `tickets`
 --
 ALTER TABLE `tickets`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `ticket_details`
 --
 ALTER TABLE `ticket_details`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
---
--- AUTO_INCREMENT for table `users`
---
-ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
 --
 -- AUTO_INCREMENT for table `wallet`
 --
 ALTER TABLE `wallet`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
 --
 -- AUTO_INCREMENT for table `wallet_details`
 --
 ALTER TABLE `wallet_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
 --
 -- Constraints for dumped tables
 --
@@ -353,7 +420,7 @@ ALTER TABLE `wallet_details`
 -- Constraints for table `orders`
 --
 ALTER TABLE `orders`
-  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `users` (`id`);
+  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`id`);
 
 --
 -- Constraints for table `order_details`
@@ -366,26 +433,27 @@ ALTER TABLE `order_details`
 -- Constraints for table `tickets`
 --
 ALTER TABLE `tickets`
-  ADD CONSTRAINT `tickets_ibfk_1` FOREIGN KEY (`poster_id`) REFERENCES `users` (`id`);
+  ADD CONSTRAINT `tickets_ibfk_1` FOREIGN KEY (`poster_id`) REFERENCES `customer` (`id`);
 
 --
 -- Constraints for table `ticket_details`
 --
 ALTER TABLE `ticket_details`
   ADD CONSTRAINT `ticket_details_ibfk_1` FOREIGN KEY (`ticket_id`) REFERENCES `tickets` (`id`),
-  ADD CONSTRAINT `ticket_details_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+  ADD CONSTRAINT `ticket_details_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `customer` (`id`);
 
 --
 -- Constraints for table `wallet`
 --
 ALTER TABLE `wallet`
-  ADD CONSTRAINT `wallet_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `users` (`id`);
+  ADD CONSTRAINT `wallet_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`id`);
 
 --
 -- Constraints for table `wallet_details`
 --
 ALTER TABLE `wallet_details`
   ADD CONSTRAINT `wallet_details_ibfk_1` FOREIGN KEY (`wallet_id`) REFERENCES `wallet` (`id`);
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
