@@ -28,7 +28,7 @@ include 'includes/connect.php';
   <!-- CORE CSS-->
   <link href="css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection">
   <link href="css/style.min.css" type="text/css" rel="stylesheet" media="screen,projection">
-  <!-- Custome CSS-->    
+  <!-- Custome CSS-->
   <link href="css/custom/custom.min.css" type="text/css" rel="stylesheet" media="screen,projection">
 
   <link href="js/plugins/perfect-scrollbar/perfect-scrollbar.css" type="text/css" rel="stylesheet" media="screen,projection">
@@ -47,39 +47,39 @@ include 'includes/connect.php';
   .input-field label.active{
       width:100%;
   }
-  .left-alert input[type=text] + label:after, 
-  .left-alert input[type=password] + label:after, 
-  .left-alert input[type=email] + label:after, 
-  .left-alert input[type=url] + label:after, 
+  .left-alert input[type=text] + label:after,
+  .left-alert input[type=password] + label:after,
+  .left-alert input[type=email] + label:after,
+  .left-alert input[type=url] + label:after,
   .left-alert input[type=time] + label:after,
-  .left-alert input[type=date] + label:after, 
-  .left-alert input[type=datetime-local] + label:after, 
-  .left-alert input[type=tel] + label:after, 
-  .left-alert input[type=number] + label:after, 
-  .left-alert input[type=search] + label:after, 
+  .left-alert input[type=date] + label:after,
+  .left-alert input[type=datetime-local] + label:after,
+  .left-alert input[type=tel] + label:after,
+  .left-alert input[type=number] + label:after,
+  .left-alert input[type=search] + label:after,
   .left-alert textarea.materialize-textarea + label:after{
       left:0px;
   }
-  .right-alert input[type=text] + label:after, 
-  .right-alert input[type=password] + label:after, 
-  .right-alert input[type=email] + label:after, 
-  .right-alert input[type=url] + label:after, 
+  .right-alert input[type=text] + label:after,
+  .right-alert input[type=password] + label:after,
+  .right-alert input[type=email] + label:after,
+  .right-alert input[type=url] + label:after,
   .right-alert input[type=time] + label:after,
-  .right-alert input[type=date] + label:after, 
-  .right-alert input[type=datetime-local] + label:after, 
-  .right-alert input[type=tel] + label:after, 
-  .right-alert input[type=number] + label:after, 
-  .right-alert input[type=search] + label:after, 
+  .right-alert input[type=date] + label:after,
+  .right-alert input[type=datetime-local] + label:after,
+  .right-alert input[type=tel] + label:after,
+  .right-alert input[type=number] + label:after,
+  .right-alert input[type=search] + label:after,
   .right-alert textarea.materialize-textarea + label:after{
       right:70px;
   }
-  </style> 
+  </style>
 </head>
 
 <body>
   <!-- Start Page Loading -->
   <div id="loader-wrapper">
-      <div id="loader"></div>        
+      <div id="loader"></div>
       <div class="loader-section section-left"></div>
       <div class="loader-section section-right"></div>
   </div>
@@ -93,7 +93,7 @@ include 'includes/connect.php';
         <div class="navbar-fixed">
             <nav class="navbar-color">
                 <div class="nav-wrapper">
-                    <ul class="left">                      
+                    <ul class="left">
                       <li><h1 class="logo-wrapper"><a href="index.php" class="brand-logo darken-1"><img src="images/materialize-logo.png" alt="logo"></a> <span class="logo-text">Logo</span></h1></li>
                     </ul>
                 </div>
@@ -169,9 +169,9 @@ include 'includes/connect.php';
                             </div>
                         </li>
                     </ul>
-                </li>			
+                </li>
             <li class="bold active"><a href="users.php" class="waves-effect waves-cyan"><i class="mdi-social-person"></i> Users</a>
-            </li>			
+            </li>
         </ul>
         <a href="#" data-activates="slide-out" class="sidebar-collapse btn-floating btn-medium waves-effect waves-light hide-on-large-only cyan"><i class="mdi-navigation-menu"></i></a>
         </aside>
@@ -213,11 +213,11 @@ include 'includes/connect.php';
                         <th data-field="name">Name</th>
                         <th data-field="price">Email</th>
                         <th data-field="price">Contact</th>
-                        <th data-field="price">Address</th>	
-                        <th data-field="price">Role</th>
+                        <th data-field="price">Address</th>
+
                         <th data-field="price">Verified</th>
                         <th data-field="price">Enable</th>
-                        <th data-field="price">Wallet</th>						
+                        <th data-field="price">Wallet</th>
                       </tr>
                     </thead>
 
@@ -228,16 +228,13 @@ include 'includes/connect.php';
 				{
 					echo '<tr><td>'.$row["name"].'</td>';
 					echo '<td>'.$row["email"].'</td>';
-					echo '<td>'.$row["contact"].'</td>';   
-					echo '<td>'.$row["address"].'</td>';      					
-					echo '<td><select name="'.$row['id'].'_role">
-                      <option value="Administrator"'.($row['role']=='Administrator' ? 'selected' : '').'>Administrator</option>
-                      <option value="Customer"'.($row['role']=='Customer' ? 'selected' : '').'>Customer</option>
-                    </select></td>';
+					echo '<td>'.$row["contact"].'</td>';
+					echo '<td>'.$row["address"].'</td>';
+
 					echo '<td><select name="'.$row['id'].'_verified">
                       <option value="1"'.($row['verified'] ? 'selected' : '').'>Verified</option>
                       <option value="0"'.(!$row['verified'] ? 'selected' : '').'>Not Verified</option>
-                    </select></td>';	
+                    </select></td>';
 					echo '<td><select name="'.$row['id'].'_deleted">
                       <option value="1"'.($row['deleted'] ? 'selected' : '').'>Disable</option>
                       <option value="0"'.(!$row['deleted'] ? 'selected' : '').'>Enable</option>
@@ -251,7 +248,7 @@ include 'includes/connect.php';
 							$balance = $row2['balance'];
 						}
 					}
-					echo '<td><label for="balance">Balance</label><input id="balance" name="'.$row['id'].'_balance" value="'.$balance.'" type="number" data-error=".errorTxt01"><div class="errorTxt01"></div></td></tr>'; 					
+					echo '<td><label for="balance">Balance</label><input id="balance" name="'.$row['id'].'_balance" value="'.$balance.'" type="number" data-error=".errorTxt01"><div class="errorTxt01"></div></td></tr>';
 				}
 				?>
                     </tbody>
@@ -267,32 +264,32 @@ include 'includes/connect.php';
 		  <form class="formValidate" id="formValidate" method="post" action="routers/add-users.php" novalidate="novalidate">
             <div class="row">
               <div class="col s12 m4 l3">
-                <h4 class="header">Add User</h4>
+                <h4 class="header">Add User or Employee</h4>
               </div>
               <div>
 <table>
                     <thead>
                       <tr>
                         <th data-field="name">Username</th>
-                        <th data-field="name">Password</th>							
+                        <th data-field="name">Password</th>
                         <th data-field="name">Name</th>
                         <th data-field="price">Email</th>
                         <th data-field="price">Phone number</th>
-                        <th data-field="price">Address</th>	
+                        <th data-field="price">Address</th>
                         <th data-field="price">Role</th>
                         <th data-field="price">Verified</th>
-                        <th data-field="price">Enable</th>		
+                        <th data-field="price">Enable</th>
                       </tr>
                     </thead>
 
                     <tbody>
 				<?php
-					echo '<tr><td><label for="username">Username</label><input id="username" name="username" type="text" data-error=".errorTxt02"><div class="errorTxt02"></div></td>';   									
-					echo '<td><label for="password">Password</label><input id="password" name="password" type="password" data-error=".errorTxt03"><div class="errorTxt03"></div></td>';   									
+					echo '<tr><td><label for="username">Username</label><input id="username" name="username" type="text" data-error=".errorTxt02"><div class="errorTxt02"></div></td>';
+					echo '<td><label for="password">Password</label><input id="password" name="password" type="password" data-error=".errorTxt03"><div class="errorTxt03"></div></td>';
 					echo '<td><label for="name">Name</label><input id="name" name="name" type="text" data-error=".errorTxt04"><div class="errorTxt04"></div></td>';
 					echo '<td><label for="email">Email</label><input id="email" name="email" type="email"></td>';
-					echo '<td><label for="contact">Phone number</label><input id="contact" name="contact" type="number" data-error=".errorTxt05"><div class="errorTxt05"></div></td>';   
-					echo '<td><label for="address">Address</label><input id="address" name="address" type="text" data-error=".errorTxt06"><div class="errorTxt06"></div></td>';   
+					echo '<td><label for="contact">Phone number</label><input id="contact" name="contact" type="number" data-error=".errorTxt05"><div class="errorTxt05"></div></td>';
+					echo '<td><label for="address">Address</label><input id="address" name="address" type="text" data-error=".errorTxt06"><div class="errorTxt06"></div></td>';
 					echo '<td><select name="role">
                       <option value="Administrator">Administrator</option>
                       <option value="Customer" selected>Customer</option>
@@ -300,11 +297,11 @@ include 'includes/connect.php';
 					echo '<td><select name="verified">
                       <option value="1">Verified</option>
                       <option value="0" selected>Not Verified</option>
-                    </select></td>';	
+                    </select></td>';
 					echo '<td><select name="deleted">
                       <option value="1">Disable</option>
                       <option value="0" selected>Enable</option>
-                    </select></td></tr>';					
+                    </select></td></tr>';
 				?>
                     </tbody>
 </table>
@@ -315,9 +312,9 @@ include 'includes/connect.php';
                               </button>
                             </div>
             </div>
-			</form>			
+			</form>
             <div class="divider"></div>
-            
+
           </div>
         </div>
         </div>
@@ -351,10 +348,10 @@ include 'includes/connect.php';
     <!-- ================================================
     Scripts
     ================================================ -->
-    
-    
+
+
     <!-- jQuery Library -->
-    <script type="text/javascript" src="js/plugins/jquery-1.11.2.min.js"></script>    
+    <script type="text/javascript" src="js/plugins/jquery-1.11.2.min.js"></script>
     <!--angularjs-->
     <script type="text/javascript" src="js/plugins/angular.min.js"></script>
     <!--materialize js-->
@@ -363,8 +360,8 @@ include 'includes/connect.php';
     <script type="text/javascript" src="js/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 	<script type="text/javascript" src="js/plugins/jquery-validation/jquery.validate.min.js"></script>
     <script type="text/javascript" src="js/plugins/jquery-validation/additional-methods.min.js"></script>
-    	
-	
+
+
     <!--plugins.js - Some Specific JS codes for Plugin Settings-->
     <script type="text/javascript" src="js/plugins.min.js"></script>
     <!--custom-script.js - Add your own theme custom JS-->
@@ -389,34 +386,34 @@ include 'includes/connect.php';
 			},
             address: {
                 minlength: 10,
-			},		
+			},
             balance: {
                 required: true,
-			},				
+			},
 		},
         messages: {
            username:{
                 required: "Enter a username",
                 minlength: "Enter at least 5 characters"
-            },	
+            },
            password:{
                 required: "Provide a prove",
                 minlength: "Password must be atleast 5 characters long",
-            },	
+            },
            name:{
                 required: "Please provide CVV number",
-                minlength: "Enter at least 5 characters",		
-            },	
+                minlength: "Enter at least 5 characters",
+            },
            contact:{
                 required: "Please provide card number",
                 minlength: "Enter at least 4 digits",
-            },	
+            },
            address:{
-                minlength: "Address must be atleast 10 characters long",		
-            },		
+                minlength: "Address must be atleast 10 characters long",
+            },
            balance:{
-                required: "Please provide a balance.",		
-            },				
+                required: "Please provide a balance.",
+            },
 		},
         errorElement : 'div',
         errorPlacement: function(error, element) {
@@ -427,7 +424,7 @@ include 'includes/connect.php';
             error.insertAfter(element);
           }
         }
-     }); 
+     });
     </script>
 </body>
 
@@ -438,7 +435,7 @@ include 'includes/connect.php';
 	{
 		if($_SESSION['customer_sid']==session_id())
 		{
-			header("location:index.php");		
+			header("location:index.php");
 		}
 		else{
 			header("location:login.php");
