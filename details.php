@@ -2,9 +2,9 @@
 include 'includes/connect.php';
 $user_id = $_SESSION['user_id'];
 
-$result = mysqli_query($con, "SELECT * FROM users where id = $user_id");
+$result = mysqli_query($con, "SELECT * FROM customer where id = $user_id");
 while($row = mysqli_fetch_array($result)){
-$name = $row['name'];	
+$name = $row['name'];
 $address = $row['address'];
 $contact = $row['contact'];
 $email = $row['email'];
@@ -36,7 +36,7 @@ $username = $row['username'];
   <!-- CORE CSS-->
   <link href="css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection">
   <link href="css/style.min.css" type="text/css" rel="stylesheet" media="screen,projection">
-  <!-- Custome CSS-->    
+  <!-- Custome CSS-->
   <link href="css/custom/custom.min.css" type="text/css" rel="stylesheet" media="screen,projection">
 
   <!-- INCLUDED PLUGIN CSS ON THIS PAGE -->
@@ -56,39 +56,39 @@ $username = $row['username'];
   .input-field label.active{
       width:100%;
   }
-  .left-alert input[type=text] + label:after, 
-  .left-alert input[type=password] + label:after, 
-  .left-alert input[type=email] + label:after, 
-  .left-alert input[type=url] + label:after, 
+  .left-alert input[type=text] + label:after,
+  .left-alert input[type=password] + label:after,
+  .left-alert input[type=email] + label:after,
+  .left-alert input[type=url] + label:after,
   .left-alert input[type=time] + label:after,
-  .left-alert input[type=date] + label:after, 
-  .left-alert input[type=datetime-local] + label:after, 
-  .left-alert input[type=tel] + label:after, 
-  .left-alert input[type=number] + label:after, 
-  .left-alert input[type=search] + label:after, 
+  .left-alert input[type=date] + label:after,
+  .left-alert input[type=datetime-local] + label:after,
+  .left-alert input[type=tel] + label:after,
+  .left-alert input[type=number] + label:after,
+  .left-alert input[type=search] + label:after,
   .left-alert textarea.materialize-textarea + label:after{
       left:0px;
   }
-  .right-alert input[type=text] + label:after, 
-  .right-alert input[type=password] + label:after, 
-  .right-alert input[type=email] + label:after, 
-  .right-alert input[type=url] + label:after, 
+  .right-alert input[type=text] + label:after,
+  .right-alert input[type=password] + label:after,
+  .right-alert input[type=email] + label:after,
+  .right-alert input[type=url] + label:after,
   .right-alert input[type=time] + label:after,
-  .right-alert input[type=date] + label:after, 
-  .right-alert input[type=datetime-local] + label:after, 
-  .right-alert input[type=tel] + label:after, 
-  .right-alert input[type=number] + label:after, 
-  .right-alert input[type=search] + label:after, 
+  .right-alert input[type=date] + label:after,
+  .right-alert input[type=datetime-local] + label:after,
+  .right-alert input[type=tel] + label:after,
+  .right-alert input[type=number] + label:after,
+  .right-alert input[type=search] + label:after,
   .right-alert textarea.materialize-textarea + label:after{
       right:70px;
   }
-  </style> 
+  </style>
 </head>
 
 <body>
   <!-- Start Page Loading -->
   <div id="loader-wrapper">
-      <div id="loader"></div>        
+      <div id="loader"></div>
       <div class="loader-section section-left"></div>
       <div class="loader-section section-right"></div>
   </div>
@@ -102,9 +102,9 @@ $username = $row['username'];
         <div class="navbar-fixed">
             <nav class="navbar-color">
                 <div class="nav-wrapper">
-                    <ul class="left">                      
-                      <li><h1 class="logo-wrapper"><a href="index.php" class="brand-logo darken-1"><img src="images/materialize-logo.png" alt="logo"></a> <span class="logo-text">Logo</span></h1></li>
-                    </ul>				
+                    <ul class="left">
+                      <li><h1 class="logo-wrapper"><a href="index.php" class="brand-logo darken-1"> </a> <span class="logo-text">Logo</span></h1></li>
+                    </ul>
                 </div>
             </nav>
         </div>
@@ -178,9 +178,9 @@ $username = $row['username'];
                             </div>
                         </li>
                     </ul>
-                </li>			
+                </li>
             <li class="bold active"><a href="details.php" class="waves-effect waves-cyan"><i class="mdi-social-person"></i> Edit Details</a>
-            </li>			
+            </li>
         </ul>
         <a href="#" data-activates="slide-out" class="sidebar-collapse btn-floating btn-medium waves-effect waves-light hide-on-large-only cyan"><i class="mdi-navigation-menu"></i></a>
         </aside>
@@ -223,7 +223,7 @@ $username = $row['username'];
                           <label for="username" class="">Username</label>
 						  <div class="errorTxt1"></div>
                         </div>
-                      </div>					
+                      </div>
                       <div class="row">
                         <div class="input-field col s12">
                           <i class="mdi-action-account-circle prefix"></i>
@@ -255,7 +255,7 @@ $username = $row['username'];
                           <label for="phone" class="">Contact</label>
 						  <div class="errorTxt5"></div>
                         </div>
-                      </div>					  
+                      </div>
                       <div class="row">
                         <div class="input-field col s12">
                           <i class="mdi-action-home prefix"></i>
@@ -276,7 +276,7 @@ $username = $row['username'];
                 </div>
               </div>
             <div class="divider"></div>
-            
+
           </div>
         <!--end container-->
 
@@ -296,8 +296,8 @@ $username = $row['username'];
   <footer class="page-footer">
     <div class="footer-copyright">
       <div class="container">
-        <span>Copyright © 2017 <a class="grey-text text-lighten-4" href="#" target="_blank">Students</a> All rights reserved.</span>
-        <span class="right"> Design and Developed by <a class="grey-text text-lighten-4" href="#">Students</a></span>
+
+
         </div>
     </div>
   </footer>
@@ -308,9 +308,9 @@ $username = $row['username'];
     <!-- ================================================
     Scripts
     ================================================ -->
-    
+
     <!-- jQuery Library -->
-    <script type="text/javascript" src="js/plugins/jquery-1.11.2.min.js"></script>    
+    <script type="text/javascript" src="js/plugins/jquery-1.11.2.min.js"></script>
     <!--angularjs-->
     <script type="text/javascript" src="js/plugins/angular.min.js"></script>
     <!--materialize js-->
@@ -321,7 +321,7 @@ $username = $row['username'];
 
     <script type="text/javascript" src="js/plugins/jquery-validation/jquery.validate.min.js"></script>
     <script type="text/javascript" src="js/plugins/jquery-validation/additional-methods.min.js"></script>
-    
+
     <!--plugins.js - Some Specific JS codes for Plugin Settings-->
     <script type="text/javascript" src="js/plugins.min.js"></script>
     <!--custom-script.js - Add your own theme custom JS-->
@@ -363,7 +363,7 @@ $username = $row['username'];
             username: {
                 required: "Enter username",
                 minlength: "Minimum 5 characters are required.",
-                maxlength: "Maximum 10 characters are required."				
+                maxlength: "Maximum 10 characters are required."
             },
             name: {
                 required: "Enter name",
@@ -372,23 +372,23 @@ $username = $row['username'];
             },
             email: {
 				required: "Enter email",
-                maxlength: "Maximum 35 characters are required."				
+                maxlength: "Maximum 35 characters are required."
 			},
 			password: {
 				required: "Enter password",
 				minlength: "Minimum 5 characters are required.",
-                maxlength: "Maximum 16 characters are required."				
+                maxlength: "Maximum 16 characters are required."
 			},
             phone:{
 				required: "Specify contact number.",
 				minlength: "Minimum 4 characters are required.",
-                maxlength: "Maximum 11 digits are accepted."				
-			},	
+                maxlength: "Maximum 11 digits are accepted."
+			},
             address:{
 				required: "Specify address",
 				minlength: "Minimum 10 characters are required.",
-                maxlength: "Maximum 300 characters are accepted."				
-			},			
+                maxlength: "Maximum 300 characters are accepted."
+			},
         },
         errorElement : 'div',
         errorPlacement: function(error, element) {
@@ -410,7 +410,7 @@ $username = $row['username'];
 	{
 		if($_SESSION['admin_sid']==session_id())
 		{
-			header("location:admin-page.php");		
+			header("location:admin-page.php");
 		}
 		else{
 			header("location:login.php");

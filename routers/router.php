@@ -25,7 +25,7 @@ if($success == true)
 }
 else
 {
-	$result = mysqli_query($con, "SELECT * FROM users WHERE username='$username' AND password='$password' AND not deleted;");
+	$result = mysqli_query($con, "SELECT * FROM customer WHERE username='$username' AND password='$password' AND not deleted;");
 	while($row = mysqli_fetch_array($result))
 	{
 	$success = true;
