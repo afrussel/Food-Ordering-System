@@ -1,6 +1,6 @@
 <?php
 include 'includes/connect.php';
-include 'includes/wallet.php';
+
 
 	if($_SESSION['customer_sid']==session_id())
 	{
@@ -28,12 +28,12 @@ include 'includes/wallet.php';
   <!-- CORE CSS-->
   <link href="css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection">
   <link href="css/style.min.css" type="text/css" rel="stylesheet" media="screen,projection">
-  <!-- Custome CSS-->    
+  <!-- Custome CSS-->
   <link href="css/custom/custom.min.css" type="text/css" rel="stylesheet" media="screen,projection">
   <!-- INCLUDED PLUGIN CSS ON THIS PAGE -->
   <link href="js/plugins/perfect-scrollbar/perfect-scrollbar.css" type="text/css" rel="stylesheet" media="screen,projection">
   <link href="js/plugins/data-tables/css/jquery.dataTables.min.css" type="text/css" rel="stylesheet" media="screen,projection">
-  
+
    <style type="text/css">
   .input-field div.error{
     position: relative;
@@ -49,39 +49,39 @@ include 'includes/wallet.php';
   .input-field label.active{
       width:100%;
   }
-  .left-alert input[type=text] + label:after, 
-  .left-alert input[type=password] + label:after, 
-  .left-alert input[type=email] + label:after, 
-  .left-alert input[type=url] + label:after, 
+  .left-alert input[type=text] + label:after,
+  .left-alert input[type=password] + label:after,
+  .left-alert input[type=email] + label:after,
+  .left-alert input[type=url] + label:after,
   .left-alert input[type=time] + label:after,
-  .left-alert input[type=date] + label:after, 
-  .left-alert input[type=datetime-local] + label:after, 
-  .left-alert input[type=tel] + label:after, 
-  .left-alert input[type=number] + label:after, 
-  .left-alert input[type=search] + label:after, 
+  .left-alert input[type=date] + label:after,
+  .left-alert input[type=datetime-local] + label:after,
+  .left-alert input[type=tel] + label:after,
+  .left-alert input[type=number] + label:after,
+  .left-alert input[type=search] + label:after,
   .left-alert textarea.materialize-textarea + label:after{
       left:0px;
   }
-  .right-alert input[type=text] + label:after, 
-  .right-alert input[type=password] + label:after, 
-  .right-alert input[type=email] + label:after, 
-  .right-alert input[type=url] + label:after, 
+  .right-alert input[type=text] + label:after,
+  .right-alert input[type=password] + label:after,
+  .right-alert input[type=email] + label:after,
+  .right-alert input[type=url] + label:after,
   .right-alert input[type=time] + label:after,
-  .right-alert input[type=date] + label:after, 
-  .right-alert input[type=datetime-local] + label:after, 
-  .right-alert input[type=tel] + label:after, 
-  .right-alert input[type=number] + label:after, 
-  .right-alert input[type=search] + label:after, 
+  .right-alert input[type=date] + label:after,
+  .right-alert input[type=datetime-local] + label:after,
+  .right-alert input[type=tel] + label:after,
+  .right-alert input[type=number] + label:after,
+  .right-alert input[type=search] + label:after,
   .right-alert textarea.materialize-textarea + label:after{
       right:70px;
   }
-  </style> 
+  </style>
 </head>
 
 <body>
   <!-- Start Page Loading -->
   <div id="loader-wrapper">
-      <div id="loader"></div>        
+      <div id="loader"></div>
       <div class="loader-section section-left"></div>
       <div class="loader-section section-right"></div>
   </div>
@@ -95,13 +95,13 @@ include 'includes/wallet.php';
         <div class="navbar-fixed">
             <nav class="navbar-color">
                 <div class="nav-wrapper">
-                    <ul class="left">                      
-                      <li><h1 class="logo-wrapper"><a href="index.php" class="brand-logo darken-1"><img src="images/materialize-logo.png" alt="logo"></a> <span class="logo-text">Logo</span></h1></li>
+                    <ul class="left">
+                      <li><h1 class="logo-wrapper"><a href="index.php" class="brand-logo darken-1"> </a> <span class="logo-text">Logo</span></h1></li>
                     </ul>
-                    <ul class="right hide-on-med-and-down">                        
-                        <li><a href="#" class="waves-effect waves-block waves-light"><i class="mdi-editor-attach-money"></i></a>
+                    <ul class="right hide-on-med-and-down">
+
                         </li>
-                    </ul>					
+                    </ul>
                 </div>
             </nav>
         </div>
@@ -182,9 +182,9 @@ include 'includes/wallet.php';
                             </div>
                         </li>
                     </ul>
-                </li>			
+                </li>
             <li class="bold"><a href="details.php" class="waves-effect waves-cyan"><i class="mdi-social-person"></i> Edit Details</a>
-            </li>				
+            </li>
         </ul>
         <a href="#" data-activates="slide-out" class="sidebar-collapse btn-floating btn-medium waves-effect waves-light hide-on-large-only cyan"><i class="mdi-navigation-menu"></i></a>
         </aside>
@@ -233,7 +233,7 @@ include 'includes/wallet.php';
                           <label for="description" class="">Description</label>
 						  <div class="errorTxt2"></div>
                         </div>
-                      </div>					  
+                      </div>
                       <div class="row">
                         <div class="input-field col s4">
 							<select name="type">
@@ -241,11 +241,11 @@ include 'includes/wallet.php';
 								<option value="Support">Support</option>
 								<option value="Payment">Payment</option>
 								<option value="Complaint">Complaint</option>
-								<option value="Others">Others</option>				
+								<option value="Others">Others</option>
 							</select>
 							<label>Type</label>
                         </div>
-                      </div>					  
+                      </div>
                       <div class="row">
                         <div class="row">
                           <div class="input-field col s12">
@@ -261,15 +261,15 @@ include 'includes/wallet.php';
                 </div>
               </div>
             <div class="divider"></div>
-            
+
           </div>
         <!--end container-->
 
 
       <!-- END CONTENT -->
     </div>
-	
-	
+
+
 	        <!--start container-->
         <div class="container">
           <p class="caption">List of your tickets</p>
@@ -282,16 +282,16 @@ include 'includes/wallet.php';
 									}
 									else{
 										$status = '%';
-									}			
+									}
 									$sql = mysqli_query($con, "SELECT * FROM tickets WHERE poster_id = $user_id AND status LIKE '$status' AND not deleted;");
-									while($row = mysqli_fetch_array($sql)){								                                
+									while($row = mysqli_fetch_array($sql)){
 									echo'<a href="view-ticket.php?id='.$row['id'].'"class="collection-item">
                                         <div class="row">
                                             <div class="col s6">
-                                                <p class="collections-title">'.$row['subject'].'</p>                                              
+                                                <p class="collections-title">'.$row['subject'].'</p>
                                             </div>
                                             <div class="col s2">
-                                            <span class="task-cat cyan">'.$row['status'].'</span></div>											
+                                            <span class="task-cat cyan">'.$row['status'].'</span></div>
                                             <div class="col s2">
                                             <span class="task-cat grey darken-3">'.$row['type'].'</span></div>
                                             <div class="col s2">
@@ -303,7 +303,7 @@ include 'includes/wallet.php';
 									</ul>
 									</div>
             <div class="divider"></div>
-            
+
           </div>
         <!--end container-->
 
@@ -316,25 +316,16 @@ include 'includes/wallet.php';
 
   <!-- //////////////////////////////////////////////////////////////////////////// -->
 
-  <!-- START FOOTER -->
-  <footer class="page-footer">
-    <div class="footer-copyright">
-      <div class="container">
-        <span>Copyright © 2017 <a class="grey-text text-lighten-4" href="#" target="_blank">Students</a> All rights reserved.</span>
-        <span class="right"> Design and Developed by <a class="grey-text text-lighten-4" href="#">Students</a></span>
-        </div>
-    </div>
-  </footer>
-    <!-- END FOOTER -->
+
 
 
 
     <!-- ================================================
     Scripts
     ================================================ -->
-    
+
     <!-- jQuery Library -->
-    <script type="text/javascript" src="js/plugins/jquery-1.11.2.min.js"></script>    
+    <script type="text/javascript" src="js/plugins/jquery-1.11.2.min.js"></script>
     <!--angularjs-->
     <script type="text/javascript" src="js/plugins/angular.min.js"></script>
     <!--materialize js-->
@@ -344,10 +335,10 @@ include 'includes/wallet.php';
     <!-- data-tables -->
     <script type="text/javascript" src="js/plugins/data-tables/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="js/plugins/data-tables/data-tables-script.js"></script>
-	
+
     <script type="text/javascript" src="js/plugins/jquery-validation/jquery.validate.min.js"></script>
     <script type="text/javascript" src="js/plugins/jquery-validation/additional-methods.min.js"></script>
-    
+
     <!--plugins.js - Some Specific JS codes for Plugin Settings-->
     <script type="text/javascript" src="js/plugins.min.js"></script>
     <!--custom-script.js - Add your own theme custom JS-->
@@ -363,26 +354,26 @@ include 'includes/wallet.php';
             description: {
                 required: true,
                 minlength: 20,
-				maxlength: 300				
+				maxlength: 300
             },
             type: {
-                required: true,			
-            },			
+                required: true,
+            },
         },
         messages: {
             subject: {
                 required: "Provide a subject",
                 minlength: "Minimum 5 characters are required.",
-                maxlength: "Maximum 100 characters are required."				
+                maxlength: "Maximum 100 characters are required."
             },
             description: {
                 required: "Provide description of your problem",
                 minlength: "Minimum 20 characters are required.",
-                maxlength: "Maximum 3000 characters are required."					
-            },	
+                maxlength: "Maximum 3000 characters are required."
+            },
             type: {
                 required: "Please specify type of your problem",
-            },				
+            },
         },
         errorElement : 'div',
         errorPlacement: function(error, element) {
@@ -404,7 +395,7 @@ include 'includes/wallet.php';
 	{
 		if($_SESSION['admin_sid']==session_id())
 		{
-			header("location:all-tickets.php");		
+			header("location:all-tickets.php");
 		}
 		else{
 			header("location:login.php");

@@ -1,6 +1,6 @@
 <?php
 include 'includes/connect.php';
-include 'includes/wallet.php';
+
 $continue=0;
 if($_SESSION['admin_sid']==session_id())
 {
@@ -111,10 +111,10 @@ if($continue){
             <nav class="navbar-color">
                 <div class="nav-wrapper">
                     <ul class="left">
-                      <li><h1 class="logo-wrapper"><a href="index.php" class="brand-logo darken-1"><img src="images/materialize-logo.png" alt="logo"></a> <span class="logo-text">Logo</span></h1></li>
+                      <li><h1 class="logo-wrapper"><a href="index.php" class="brand-logo darken-1"> </a> <span class="logo-text">Logo</span></h1></li>
                     </ul>
                     <ul class="right hide-on-med-and-down">
-                        <li><a href="#" class="waves-effect waves-block waves-light"><i class="mdi-editor-attach-money"></i></a>
+
                         </li>
                     </ul>
                 </div>
@@ -245,7 +245,7 @@ if($continue){
 								echo '<ul id="issues-collection" class="collection">';
 								$sql1 = mysqli_query($con, "SELECT * from ticket_details WHERE ticket_id = $ticket_id;");
 								while($row1 = mysqli_fetch_array($sql1)){
-									$sql2 = "SELECT * FROM users WHERE id = ".$row1['user_id'].";";
+									$sql2 = "SELECT * FROM customer WHERE id = ".$row1['user_id'].";";
 									if(mysqli_num_rows(mysqli_query($con,$sql2))>0){
 										$row2  = $con->query($sql2)->fetch_assoc();
 										$name = $row2['name'];
@@ -316,8 +316,8 @@ if($continue){
   <footer class="page-footer">
     <div class="footer-copyright">
       <div class="container">
-        <span>Copyright © 2017 <a class="grey-text text-lighten-4" href="#" target="_blank">Students</a> All rights reserved.</span>
-        <span class="right"> Design and Developed by <a class="grey-text text-lighten-4" href="#">Students</a></span>
+
+
         </div>
     </div>
   </footer>

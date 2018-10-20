@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Sep 24, 2018 at 03:28 PM
--- Server version: 10.1.35-MariaDB
--- PHP Version: 7.2.9
+-- Host: 127.0.0.1
+-- Generation Time: Oct 20, 2018 at 11:48 AM
+-- Server version: 10.1.30-MariaDB
+-- PHP Version: 7.2.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -52,7 +52,8 @@ INSERT INTO `customer` (`id`, `role`, `name`, `username`, `password`, `email`, `
 (5, 'Customer', 'Customer 4', 'user4', 'pass4', '', '', 9898000004, 0, 1),
 (6, 'Customer', 'Milind Shah', 'milind', 'milind', NULL, NULL, 9876543210, 1, 0),
 (7, 'Customer', 'prtk', 'prtk', 'prtk1910', NULL, NULL, 9619775837, 0, 0),
-(8, 'Customer', 'test', 'testcustom', '1234', 'test@test.com', 'Mumbai', 9876543210, 1, 0);
+(8, 'Customer', 'test', 'testcustom', '1234', 'test@test.com', 'Mumbai', 9876543210, 1, 0),
+(9, 'Customer', 'newuser1', 'newuser1', 'newuser1', 'newuser1@gmail.com', 'Mumbai', 9876543210, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -103,7 +104,8 @@ INSERT INTO `items` (`id`, `name`, `price`, `deleted`) VALUES
 (2, 'Item 2', 45, 0),
 (3, 'Item 3', 20, 0),
 (4, 'Item 4', 15, 1),
-(5, 'Item 5', 20, 0);
+(5, 'Item 5', 20, 0),
+(6, 'Item 88', 500, 0);
 
 -- --------------------------------------------------------
 
@@ -136,7 +138,10 @@ INSERT INTO `orders` (`id`, `customer_id`, `address`, `description`, `date`, `pa
 (6, 3, 'New Address 3', '', '2017-03-30 00:43:31', 'Wallet', 325, 'Cancelled by Customer', 1),
 (7, 2, 'Address 2', '', '2018-09-20 10:26:11', 'Cash On Delivery', 105, 'Cancelled by Customer', 1),
 (8, 6, 'aaaaa', '', '2018-09-20 19:07:37', 'Wallet', 85, 'Yet to be delivered', 0),
-(9, 8, 'Mumbai', '', '2018-09-24 18:15:01', 'Cash On Delivery', 345, 'Delivered', 0);
+(9, 8, 'Mumbai', '', '2018-09-24 18:15:01', 'Cash On Delivery', 345, 'Delivered', 0),
+(10, 9, 'Mumbai', '', '2018-09-29 10:39:54', 'Cash On Delivery', 85, 'Yet to be delivered', 0),
+(11, 8, 'Mumbai', '', '2018-10-08 10:22:46', 'Cash On Delivery', 605, 'Yet to be delivered', 0),
+(12, 8, 'Mumbai', '', '2018-10-08 10:23:11', 'Cash On Delivery', 0, 'Yet to be delivered', 0);
 
 -- --------------------------------------------------------
 
@@ -179,7 +184,14 @@ INSERT INTO `order_details` (`id`, `order_id`, `item_id`, `quantity`, `price`) V
 (20, 8, 5, 1, 20),
 (21, 9, 2, 5, 225),
 (22, 9, 3, 4, 80),
-(23, 9, 5, 2, 40);
+(23, 9, 5, 2, 40),
+(24, 10, 2, 1, 45),
+(25, 10, 3, 1, 20),
+(26, 10, 5, 1, 20),
+(27, 11, 6, 1, 500),
+(28, 11, 2, 1, 45),
+(29, 11, 3, 2, 40),
+(30, 11, 5, 1, 20);
 
 -- --------------------------------------------------------
 
@@ -226,57 +238,6 @@ CREATE TABLE `ticket_details` (
 INSERT INTO `ticket_details` (`id`, `ticket_id`, `user_id`, `description`, `date`) VALUES
 (1, 1, 2, 'New Description for Subject 1', '2017-03-30 18:08:51'),
 (2, 1, 2, 'Reply-1 for Subject 1', '2017-03-30 19:59:09');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `wallet`
---
-
-CREATE TABLE `wallet` (
-  `id` int(11) NOT NULL,
-  `customer_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `wallet`
---
-
-INSERT INTO `wallet` (`id`, `customer_id`) VALUES
-(2, 2),
-(3, 3),
-(4, 4),
-(5, 5),
-(6, 6),
-(7, 7),
-(8, 8);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `wallet_details`
---
-
-CREATE TABLE `wallet_details` (
-  `id` int(11) NOT NULL,
-  `wallet_id` int(11) NOT NULL,
-  `number` varchar(16) NOT NULL,
-  `cvv` int(3) NOT NULL,
-  `balance` int(11) NOT NULL DEFAULT '2000'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `wallet_details`
---
-
-INSERT INTO `wallet_details` (`id`, `wallet_id`, `number`, `cvv`, `balance`) VALUES
-(2, 2, '1887587142382050', 772, 1850),
-(3, 3, '4595809639046830', 532, 1585),
-(4, 4, '5475856443351234', 521, 2000),
-(5, 5, '9076633115663264', 229, 2000),
-(6, 6, '2609396823159891', 324, 2000),
-(7, 7, '2147448018749784', 533, 2000),
-(8, 8, '836253277402502', 477, 2000);
 
 --
 -- Indexes for dumped tables
@@ -339,22 +300,6 @@ ALTER TABLE `ticket_details`
   ADD KEY `user_id` (`user_id`);
 
 --
--- Indexes for table `wallet`
---
-ALTER TABLE `wallet`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `customer_id` (`customer_id`),
-  ADD UNIQUE KEY `id` (`id`);
-
---
--- Indexes for table `wallet_details`
---
-ALTER TABLE `wallet_details`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `wallet_id` (`wallet_id`),
-  ADD UNIQUE KEY `id` (`id`);
-
---
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -362,7 +307,7 @@ ALTER TABLE `wallet_details`
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `employee`
@@ -374,19 +319,19 @@ ALTER TABLE `employee`
 -- AUTO_INCREMENT for table `items`
 --
 ALTER TABLE `items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `order_details`
 --
 ALTER TABLE `order_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `tickets`
@@ -398,19 +343,7 @@ ALTER TABLE `tickets`
 -- AUTO_INCREMENT for table `ticket_details`
 --
 ALTER TABLE `ticket_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT for table `wallet`
---
-ALTER TABLE `wallet`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-
---
--- AUTO_INCREMENT for table `wallet_details`
---
-ALTER TABLE `wallet_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
@@ -441,18 +374,6 @@ ALTER TABLE `tickets`
 ALTER TABLE `ticket_details`
   ADD CONSTRAINT `ticket_details_ibfk_1` FOREIGN KEY (`ticket_id`) REFERENCES `tickets` (`id`),
   ADD CONSTRAINT `ticket_details_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `customer` (`id`);
-
---
--- Constraints for table `wallet`
---
-ALTER TABLE `wallet`
-  ADD CONSTRAINT `wallet_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`id`);
-
---
--- Constraints for table `wallet_details`
---
-ALTER TABLE `wallet_details`
-  ADD CONSTRAINT `wallet_details_ibfk_1` FOREIGN KEY (`wallet_id`) REFERENCES `wallet` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

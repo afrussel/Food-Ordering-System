@@ -1,13 +1,13 @@
 <?php
 include 'includes/connect.php';
-include 'includes/wallet.php';
+
 $continue=0;
 $total = 0;
 if($_SESSION['customer_sid']==session_id())
 {
 		if($_POST['payment_type'] == 'Wallet'){
   		$_POST['cc_number'] = str_replace('-', '', $_POST['cc_number']);
-  		$card = str_replace(' ', '', $_POST['cc_number']); 
+  		$card = str_replace(' ', '', $_POST['cc_number']);
   		$_POST['cvv_number'] = (int)str_replace('-', '', $_POST['cvv_number']);
   		$sql1 = mysqli_query($con, "SELECT * FROM wallet_details where wallet_id = $wallet_id");
   		while($row1 = mysqli_fetch_array($sql1)){
@@ -22,12 +22,14 @@ if($_SESSION['customer_sid']==session_id())
 		}
 		else{
 			$continue=1;
-      $sql1 = mysqli_query($con, "INSERT INTO payment_master (Payment_Type, Card_Number, Customer_ID) values (0,0,$user_id)");
-        $con->query($sql1);
+			echo $user_id;
+      //$sql1 = mysqli_query($con, "INSERT INTO payment_master (Payment_Type, Card_Number, Customer_ID) values (0,0,$user_id)");
+		  //var_dump($sql1);
+      //  $con->query($sql1);
     }
 }
 
-$result = mysqli_query($con, "SELECT * FROM users where id = $user_id");
+$result = mysqli_query($con, "SELECT * FROM customer where id = $user_id");
 while($row = mysqli_fetch_array($result)){
 	$name = $row['name'];
 	$contact = $row['contact'];
@@ -59,7 +61,7 @@ if($continue){
   <!-- CORE CSS-->
   <link href="css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection">
   <link href="css/style.min.css" type="text/css" rel="stylesheet" media="screen,projection">
-  <!-- Custome CSS-->    
+  <!-- Custome CSS-->
   <link href="css/custom/custom.min.css" type="text/css" rel="stylesheet" media="screen,projection">
 
   <link href="js/plugins/perfect-scrollbar/perfect-scrollbar.css" type="text/css" rel="stylesheet" media="screen,projection">
@@ -69,7 +71,7 @@ if($continue){
 <body>
   <!-- Start Page Loading -->
   <div id="loader-wrapper">
-      <div id="loader"></div>        
+      <div id="loader"></div>
       <div class="loader-section section-left"></div>
       <div class="loader-section section-right"></div>
   </div>
@@ -83,13 +85,13 @@ if($continue){
         <div class="navbar-fixed">
             <nav class="navbar-color">
                 <div class="nav-wrapper">
-                    <ul class="left">                      
-                      <li><h1 class="logo-wrapper"><a href="index.php" class="brand-logo darken-1"><img src="images/materialize-logo.png" alt="logo"></a> <span class="logo-text">Logo</span></h1></li>
+                    <ul class="left">
+                      <li><h1 class="logo-wrapper"><a href="index.php" class="brand-logo darken-1"> </a> <span class="logo-text">Logo</span></h1></li>
                     </ul>
-                    <ul class="right hide-on-med-and-down">                        
-                        <li><a href="#" class="waves-effect waves-block waves-light"><i class="mdi-editor-attach-money"></i></a>
+                    <ul class="right hide-on-med-and-down">
+
                         </li>
-                    </ul>					
+                    </ul>
                 </div>
             </nav>
         </div>
@@ -163,9 +165,9 @@ if($continue){
                             </div>
                         </li>
                     </ul>
-                </li>				
+                </li>
             <li class="bold"><a href="details.php" class="waves-effect waves-cyan"><i class="mdi-social-person"></i> Edit Details</a>
-            </li>				
+            </li>
         </ul>
         <a href="#" data-activates="slide-out" class="sidebar-collapse btn-floating btn-medium waves-effect waves-light hide-on-large-only cyan"><i class="mdi-navigation-menu"></i></a>
         </aside>
@@ -203,13 +205,13 @@ if($continue){
         <i class="mdi-content-content-paste red circle"></i>
         <p><strong>Name:</strong>'.$name.'</p>
 		<p><strong>Contact Number:</strong> '.$contact.'</p>
-		<p><strong>Address:</strong> '.htmlspecialchars($_POST['address']).'</p>	
-		<p><strong>Payment Type:</strong> '.$_POST['payment_type'].'</p>			
+		<p><strong>Address:</strong> '.htmlspecialchars($_POST['address']).'</p>
+		<p><strong>Payment Type:</strong> '.$_POST['payment_type'].'</p>
         <a href="#" class="secondary-content"><i class="mdi-action-grade"></i></a>';
-		
+
 	foreach ($_POST as $key => $value)
 	{
-		if(is_numeric($key)){		
+		if(is_numeric($key)){
 		$result = mysqli_query($con, "SELECT * FROM items WHERE id = $key");
 		while($row = mysqli_fetch_array($result))
 		{
@@ -310,8 +312,8 @@ foreach ($_POST as $key => $value)
   <footer class="page-footer">
     <div class="footer-copyright">
       <div class="container">
-        <span>Copyright © 2017 <a class="grey-text text-lighten-4" href="#" target="_blank">Students</a> All rights reserved.</span>
-        <span class="right"> Design and Developed by <a class="grey-text text-lighten-4" href="#">Students</a></span>
+
+
         </div>
     </div>
   </footer>
@@ -322,15 +324,15 @@ foreach ($_POST as $key => $value)
     <!-- ================================================
     Scripts
     ================================================ -->
-    
+
     <!-- jQuery Library -->
-    <script type="text/javascript" src="js/plugins/jquery-1.11.2.min.js"></script>    
+    <script type="text/javascript" src="js/plugins/jquery-1.11.2.min.js"></script>
     <!--angularjs-->
     <script type="text/javascript" src="js/plugins/angular.min.js"></script>
     <!--materialize js-->
     <script type="text/javascript" src="js/materialize.min.js"></script>
     <!--scrollbar-->
-    <script type="text/javascript" src="js/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script> 
+    <script type="text/javascript" src="js/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     <!--plugins.js - Some Specific JS codes for Plugin Settings-->
     <script type="text/javascript" src="js/plugins.min.js"></script>
     <!--custom-script.js - Add your own theme custom JS-->
@@ -344,7 +346,7 @@ foreach ($_POST as $key => $value)
 	{
 		if($_SESSION['admin_sid']==session_id())
 		{
-			header("location:admin-page.php");		
+			header("location:admin-page.php");
 		}
 		else{
 			header("location:login.php");

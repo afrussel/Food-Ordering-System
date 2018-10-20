@@ -94,7 +94,7 @@ include 'includes/connect.php';
             <nav class="navbar-color">
                 <div class="nav-wrapper">
                     <ul class="left">
-                      <li><h1 class="logo-wrapper"><a href="index.php" class="brand-logo darken-1"><img src="images/materialize-logo.png" alt="logo"></a> <span class="logo-text">Logo</span></h1></li>
+                      <li><h1 class="logo-wrapper"><a href="index.php" class="brand-logo darken-1"> </a> <span class="logo-text">Logo</span></h1></li>
                     </ul>
                 </div>
             </nav>
@@ -217,13 +217,12 @@ include 'includes/connect.php';
 
                         <th data-field="price">Verified</th>
                         <th data-field="price">Enable</th>
-                        <th data-field="price">Wallet</th>
                       </tr>
                     </thead>
 
                     <tbody>
 				<?php
-				$result = mysqli_query($con, "SELECT * FROM users");
+				$result = mysqli_query($con, "SELECT * FROM customer");
 				while($row = mysqli_fetch_array($result))
 				{
 					echo '<tr><td>'.$row["name"].'</td>';
@@ -240,15 +239,7 @@ include 'includes/connect.php';
                       <option value="0"'.(!$row['deleted'] ? 'selected' : '').'>Enable</option>
                     </select></td>';
 					$key = $row['id'];
-					$sql = mysqli_query($con,"SELECT * from wallet WHERE customer_id = $key;");
-					if($row1 = mysqli_fetch_array($sql)){
-						$wallet_id = $row1['id'];
-						$sql1 = mysqli_query($con,"SELECT * from wallet_details WHERE wallet_id = $wallet_id;");
-						if($row2 = mysqli_fetch_array($sql1)){
-							$balance = $row2['balance'];
-						}
-					}
-					echo '<td><label for="balance">Balance</label><input id="balance" name="'.$row['id'].'_balance" value="'.$balance.'" type="number" data-error=".errorTxt01"><div class="errorTxt01"></div></td></tr>';
+					
 				}
 				?>
                     </tbody>
@@ -332,16 +323,6 @@ include 'includes/connect.php';
 
   <!-- //////////////////////////////////////////////////////////////////////////// -->
 
-  <!-- START FOOTER -->
-  <footer class="page-footer">
-    <div class="footer-copyright">
-      <div class="container">
-        <span>Copyright © 2017 <a class="grey-text text-lighten-4" href="#" target="_blank">Students</a> All rights reserved.</span>
-        <span class="right"> Design and Developed by <a class="grey-text text-lighten-4" href="#">Students</a></span>
-        </div>
-    </div>
-  </footer>
-    <!-- END FOOTER -->
 
 
 
