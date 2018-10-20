@@ -1,6 +1,6 @@
 <?php
 include 'includes/connect.php';
-include 'includes/wallet.php';
+
 $continue=0;
 $total = 0;
 if($_SESSION['customer_sid']==session_id())

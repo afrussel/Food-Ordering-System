@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Oct 18, 2018 at 06:36 PM
--- Server version: 10.1.35-MariaDB
--- PHP Version: 7.2.9
+-- Host: 127.0.0.1
+-- Generation Time: Oct 20, 2018 at 11:48 AM
+-- Server version: 10.1.30-MariaDB
+-- PHP Version: 7.2.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -239,59 +239,6 @@ INSERT INTO `ticket_details` (`id`, `ticket_id`, `user_id`, `description`, `date
 (1, 1, 2, 'New Description for Subject 1', '2017-03-30 18:08:51'),
 (2, 1, 2, 'Reply-1 for Subject 1', '2017-03-30 19:59:09');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `wallet`
---
-
-CREATE TABLE `wallet` (
-  `id` int(11) NOT NULL,
-  `customer_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `wallet`
---
-
-INSERT INTO `wallet` (`id`, `customer_id`) VALUES
-(2, 2),
-(3, 3),
-(4, 4),
-(5, 5),
-(6, 6),
-(7, 7),
-(8, 8),
-(9, 9);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `wallet_details`
---
-
-CREATE TABLE `wallet_details` (
-  `id` int(11) NOT NULL,
-  `wallet_id` int(11) NOT NULL,
-  `number` varchar(16) NOT NULL,
-  `cvv` int(3) NOT NULL,
-  `balance` int(11) NOT NULL DEFAULT '2000'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `wallet_details`
---
-
-INSERT INTO `wallet_details` (`id`, `wallet_id`, `number`, `cvv`, `balance`) VALUES
-(2, 2, '1887587142382050', 772, 1850),
-(3, 3, '4595809639046830', 532, 1585),
-(4, 4, '5475856443351234', 521, 2000),
-(5, 5, '9076633115663264', 229, 2000),
-(6, 6, '2609396823159891', 324, 2000),
-(7, 7, '2147448018749784', 533, 2000),
-(8, 8, '836253277402502', 477, 2100),
-(9, 9, '3365789585623998', 313, 2000);
-
 --
 -- Indexes for dumped tables
 --
@@ -353,22 +300,6 @@ ALTER TABLE `ticket_details`
   ADD KEY `user_id` (`user_id`);
 
 --
--- Indexes for table `wallet`
---
-ALTER TABLE `wallet`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `customer_id` (`customer_id`),
-  ADD UNIQUE KEY `id` (`id`);
-
---
--- Indexes for table `wallet_details`
---
-ALTER TABLE `wallet_details`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `wallet_id` (`wallet_id`),
-  ADD UNIQUE KEY `id` (`id`);
-
---
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -415,18 +346,6 @@ ALTER TABLE `ticket_details`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `wallet`
---
-ALTER TABLE `wallet`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-
---
--- AUTO_INCREMENT for table `wallet_details`
---
-ALTER TABLE `wallet_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-
---
 -- Constraints for dumped tables
 --
 
@@ -455,18 +374,6 @@ ALTER TABLE `tickets`
 ALTER TABLE `ticket_details`
   ADD CONSTRAINT `ticket_details_ibfk_1` FOREIGN KEY (`ticket_id`) REFERENCES `tickets` (`id`),
   ADD CONSTRAINT `ticket_details_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `customer` (`id`);
-
---
--- Constraints for table `wallet`
---
-ALTER TABLE `wallet`
-  ADD CONSTRAINT `wallet_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`id`);
-
---
--- Constraints for table `wallet_details`
---
-ALTER TABLE `wallet_details`
-  ADD CONSTRAINT `wallet_details_ibfk_1` FOREIGN KEY (`wallet_id`) REFERENCES `wallet` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
