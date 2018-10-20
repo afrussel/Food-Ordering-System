@@ -203,19 +203,82 @@ include 'includes/connect.php';
           <p class="caption">Enter No. of Orders</p>
           <div class="divider"></div>
 		  			<form name="findusers" method="GET">
-							<input type="text" name="orders">
+							Name starting with (Can be left blank): <input type="text" name="name">
+							Number of Orders: <input type="text" name="orders" required>
+
 							<button type="submit">Submit</button>
 						</form>
+
 						<?php
 							if(isset($_GET["orders"])) {
-								$orders=$_GET["orders"];
+								$no=$_GET["orders"];
+								$name=$_GET["name"];
+							//	$sqlquery="select customer_id from orders,customer where customer.id=orders.customer_id and customer.name like '%$name%' group by(customer_id) having count(orders.id)>$no";
+								$sqlquery="select * from customer where customer.id in (select customer_id from orders,customer where customer.id=orders.customer_id and customer.name like '%$name%' group by(customer_id) having count(orders.id)>$no)";
 
 							}
 
 
 						?>
+						<?php
+						if(isset($_GET["orders"])) {
+							?>
+							<div id="editableTable" class="section">
+				  <form class="formValidate" id="formValidate1" method="post" action="routers/user-router.php" novalidate="novalidate">
+		            <div class="row">
+		              <div class="col s12 m4 l3">
+		                <h4 class="header">List of users</h4>
+		              </div>
+		              <div>
+						<table>
+						                    <thead>
+						                      <tr>
+						                        <th data-field="name">Name</th>
+						                        <th data-field="price">Email</th>
+						                        <th data-field="price">Contact</th>
+						                        <th data-field="price">Address</th>
 
-						
+						                        <th data-field="price">Verified</th>
+						                        <th data-field="price">Enable</th>
+						                      </tr>
+						                    </thead>
+
+						                    <tbody>
+										<?php
+										$result = mysqli_query($con, $sqlquery);
+										while($row = mysqli_fetch_array($result))
+										{
+											echo '<tr><td>'.$row["name"].'</td>';
+											echo '<td>'.$row["email"].'</td>';
+											echo '<td>'.$row["contact"].'</td>';
+											echo '<td>'.$row["address"].'</td>';
+
+											echo '<td><select name="'.$row['id'].'_verified">
+						                      <option value="1"'.($row['verified'] ? 'selected' : '').'>Verified</option>
+						                      <option value="0"'.(!$row['verified'] ? 'selected' : '').'>Not Verified</option>
+						                    </select></td>';
+											echo '<td><select name="'.$row['id'].'_deleted">
+						                      <option value="1"'.($row['deleted'] ? 'selected' : '').'>Disable</option>
+						                      <option value="0"'.(!$row['deleted'] ? 'selected' : '').'>Enable</option>
+						                    </select></td>';
+											$key = $row['id'];
+
+										}
+										?>
+						                    </tbody>
+						</table>
+					</div>
+		<div class="input-field col s12">
+													<button class="btn cyan waves-effect waves-light right" type="submit" name="action">Modify
+														<i class="mdi-content-send right"></i>
+													</button>
+												</div>
+				</div>
+	</form>
+						<?php
+							}
+							?>
+
             <div class="divider"></div>
 
           </div>
