@@ -4,9 +4,9 @@ include 'includes/wallet.php';
 $total = 0;
 	if($_SESSION['customer_sid']==session_id())
 	{
-$result = mysqli_query($con, "SELECT * FROM users where id = $user_id");
+$result = mysqli_query($con, "SELECT * FROM customer where id = $user_id");
 while($row = mysqli_fetch_array($result)){
-$name = $row['name'];	
+$name = $row['name'];
 $address = $row['address'];
 $contact = $row['contact'];
 $verified = $row['verified'];
@@ -35,7 +35,7 @@ $verified = $row['verified'];
   <!-- CORE CSS-->
   <link href="css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection">
   <link href="css/style.min.css" type="text/css" rel="stylesheet" media="screen,projection">
-  <!-- Custome CSS-->    
+  <!-- Custome CSS-->
   <link href="css/custom/custom.min.css" type="text/css" rel="stylesheet" media="screen,projection">
 
   <!-- INCLUDED PLUGIN CSS ON THIS PAGE -->
@@ -55,29 +55,29 @@ $verified = $row['verified'];
   .input-field label.active{
       width:100%;
   }
-  .left-alert input[type=text] + label:after, 
-  .left-alert input[type=password] + label:after, 
-  .left-alert input[type=email] + label:after, 
-  .left-alert input[type=url] + label:after, 
+  .left-alert input[type=text] + label:after,
+  .left-alert input[type=password] + label:after,
+  .left-alert input[type=email] + label:after,
+  .left-alert input[type=url] + label:after,
   .left-alert input[type=time] + label:after,
-  .left-alert input[type=date] + label:after, 
-  .left-alert input[type=datetime-local] + label:after, 
-  .left-alert input[type=tel] + label:after, 
-  .left-alert input[type=number] + label:after, 
-  .left-alert input[type=search] + label:after, 
+  .left-alert input[type=date] + label:after,
+  .left-alert input[type=datetime-local] + label:after,
+  .left-alert input[type=tel] + label:after,
+  .left-alert input[type=number] + label:after,
+  .left-alert input[type=search] + label:after,
   .left-alert textarea.materialize-textarea + label:after{
       left:0px;
   }
-  .right-alert input[type=text] + label:after, 
-  .right-alert input[type=password] + label:after, 
-  .right-alert input[type=email] + label:after, 
-  .right-alert input[type=url] + label:after, 
+  .right-alert input[type=text] + label:after,
+  .right-alert input[type=password] + label:after,
+  .right-alert input[type=email] + label:after,
+  .right-alert input[type=url] + label:after,
   .right-alert input[type=time] + label:after,
-  .right-alert input[type=date] + label:after, 
-  .right-alert input[type=datetime-local] + label:after, 
-  .right-alert input[type=tel] + label:after, 
-  .right-alert input[type=number] + label:after, 
-  .right-alert input[type=search] + label:after, 
+  .right-alert input[type=date] + label:after,
+  .right-alert input[type=datetime-local] + label:after,
+  .right-alert input[type=tel] + label:after,
+  .right-alert input[type=number] + label:after,
+  .right-alert input[type=search] + label:after,
   .right-alert textarea.materialize-textarea + label:after{
       right:70px;
   }
@@ -87,7 +87,7 @@ $verified = $row['verified'];
 <body>
   <!-- Start Page Loading -->
   <div id="loader-wrapper">
-      <div id="loader"></div>        
+      <div id="loader"></div>
       <div class="loader-section section-left"></div>
       <div class="loader-section section-right"></div>
   </div>
@@ -101,13 +101,13 @@ $verified = $row['verified'];
         <div class="navbar-fixed">
             <nav class="navbar-color">
                 <div class="nav-wrapper">
-                    <ul class="left">                      
-                      <li><h1 class="logo-wrapper"><a href="index.php" class="brand-logo darken-1"><img src="images/materialize-logo.png" alt="logo"></a> <span class="logo-text">Logo</span></h1></li>
+                    <ul class="left">
+                      <li><h1 class="logo-wrapper"><a href="index.php" class="brand-logo darken-1"> </a> <span class="logo-text">Logo</span></h1></li>
                     </ul>
-                    <ul class="right hide-on-med-and-down">                        
-                        <li><a href="#" class="waves-effect waves-block waves-light"><i class="mdi-editor-attach-money"></i></a>
+                    <ul class="right hide-on-med-and-down">
+
                         </li>
-                    </ul>						
+                    </ul>
                 </div>
             </nav>
         </div>
@@ -181,9 +181,9 @@ $verified = $row['verified'];
                             </div>
                         </li>
                     </ul>
-                </li>				
+                </li>
             <li class="bold"><a href="details.php" class="waves-effect waves-cyan"><i class="mdi-social-person"></i> Edit Details</a>
-            </li>				
+            </li>
         </ul>
         <a href="#" data-activates="slide-out" class="sidebar-collapse btn-floating btn-medium waves-effect waves-light hide-on-large-only cyan"><i class="mdi-navigation-menu"></i></a>
         </aside>
@@ -224,10 +224,10 @@ $verified = $row['verified'];
 							<label for="payment_type">Payment Type</label><br><br>
 							<select id="payment_type" name="payment_type">
 									<option value="Wallet" selected>Wallet</option>
-									<option value="Cash On Delivery" <?php if(!$verified) echo 'disabled';?>>Cash on Delivery</option>							
+									<option value="Cash On Delivery" <?php if(!$verified) echo 'disabled';?>>Cash on Delivery</option>
 							</select>
                         </div>
-                      </div>					
+                      </div>
                       <div class="row">
                         <div class="input-field col s12">
                           <i class="mdi-action-home prefix"></i>
@@ -246,12 +246,12 @@ $verified = $row['verified'];
                       </div>
                       <div class="row">
                         <div class="input-field col s12">
-                          <i class="mdi-communication-vpn-key prefix"></i>	
+                          <i class="mdi-communication-vpn-key prefix"></i>
 							<input name="cvv_number" id="cvv_number" type="text" data-error=".errorTxt3" required>
-							<label for="cvv_number" class="">CVV Number</label>								
+							<label for="cvv_number" class="">CVV Number</label>
 							<div class="errorTxt3"></div>
                         </div>
-                      </div>					  
+                      </div>
                       <div class="row">
                         <div class="row">
                           <div class="input-field col s12">
@@ -275,12 +275,12 @@ $verified = $row['verified'];
                 </div>
               </div>
             <div class="divider"></div>
-            
+
           </div>
         <!--end container-->
 
       </div>
-	  
+
         <div class="container">
           <p class="caption">Estimated Receipt</p>
           <div class="divider"></div>
@@ -295,7 +295,7 @@ $verified = $row['verified'];
         <p><strong>Name:</strong>'.$name.'</p>
 		<p><strong>Contact Number:</strong> '.$contact.'</p>
         <a href="#" class="secondary-content"><i class="mdi-action-grade"></i></a>';
-		
+
 	foreach ($_POST as $key => $value)
 	{
 		if($value == ''){
@@ -369,8 +369,8 @@ $verified = $row['verified'];
   <footer class="page-footer">
     <div class="footer-copyright">
       <div class="container">
-        <span>Copyright © 2017 <a class="grey-text text-lighten-4" href="#" target="_blank">Students</a> All rights reserved.</span>
-        <span class="right"> Design and Developed by <a class="grey-text text-lighten-4" href="#">Students</a></span>
+
+
         </div>
     </div>
   </footer>
@@ -381,9 +381,9 @@ $verified = $row['verified'];
     <!-- ================================================
     Scripts
     ================================================ -->
-    
+
     <!-- jQuery Library -->
-    <script type="text/javascript" src="js/plugins/jquery-1.11.2.min.js"></script>    
+    <script type="text/javascript" src="js/plugins/jquery-1.11.2.min.js"></script>
     <!--angularjs-->
     <script type="text/javascript" src="js/plugins/angular.min.js"></script>
     <!--materialize js-->
@@ -391,8 +391,8 @@ $verified = $row['verified'];
     <!--scrollbar-->
     <script type="text/javascript" src="js/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     <script type="text/javascript" src="js/plugins/jquery-validation/jquery.validate.min.js"></script>
-    <script type="text/javascript" src="js/plugins/jquery-validation/additional-methods.min.js"></script>	
-	<script type="text/javascript" src="js/plugins/formatter/jquery.formatter.min.js"></script>   
+    <script type="text/javascript" src="js/plugins/jquery-validation/additional-methods.min.js"></script>
+	<script type="text/javascript" src="js/plugins/formatter/jquery.formatter.min.js"></script>
     <!--plugins.js - Some Specific JS codes for Plugin Settings-->
     <script type="text/javascript" src="js/plugins.min.js"></script>
     <!--custom-script.js - Add your own theme custom JS-->
@@ -417,15 +417,15 @@ $verified = $row['verified'];
            address:{
                 required: "Enter a address",
                 minlength: "Enter at least 5 characters"
-            },	
+            },
            cc_number:{
                 required: "Please provide card number",
                 minlength: "Enter at least 16 digits",
-            },	
+            },
            cvv_number:{
                 required: "Please provide CVV number",
-                minlength: "Enter at least 3 digits",		
-            },				
+                minlength: "Enter at least 3 digits",
+            },
 		},
         errorElement : 'div',
         errorPlacement: function(error, element) {
@@ -448,11 +448,11 @@ $verified = $row['verified'];
 		$('#payment_type').change(function() {
 		if ($(this).val() === 'Cash On Delivery') {
 		  $("#cc_number").prop('disabled', true);
-		  $("#cvv_number").prop('disabled', true);		  
+		  $("#cvv_number").prop('disabled', true);
 		}
 		if ($(this).val() === 'Wallet'){
 		  $("#cc_number").prop('disabled', false);
-		  $("#cvv_number").prop('disabled', false);	
+		  $("#cvv_number").prop('disabled', false);
 		}
 		});
     </script>
@@ -465,7 +465,7 @@ $verified = $row['verified'];
 	{
 		if($_SESSION['admin_sid']==session_id())
 		{
-			header("location:admin-page.php");		
+			header("location:admin-page.php");
 		}
 		else{
 			header("location:login.php");

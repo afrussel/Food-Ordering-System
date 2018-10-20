@@ -21,7 +21,7 @@ $role = $_POST['role'];
 $verified = $_POST['verified'];
 $deleted = $_POST['deleted'];
 if($role=="Customer") {
-  $sql = "INSERT INTO users (username, password, name, email, contact, address, role, verified, deleted) VALUES ('$username', '$password', '$name', '$email', $contact, '$address', '$role', $verified, $deleted)";
+  $sql = "INSERT INTO customer (username, password, name, email, contact, address, role, verified, deleted) VALUES ('$username', '$password', '$name', '$email', $contact, '$address', '$role', $verified, $deleted)";
   if($con->query($sql)==true){
   $user_id =  $con->insert_id;
   $sql = "INSERT INTO wallet(customer_id) VALUES ($user_id)";

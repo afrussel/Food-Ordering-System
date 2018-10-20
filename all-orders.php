@@ -26,18 +26,18 @@ include 'includes/connect.php';
   <!-- CORE CSS-->
   <link href="css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection">
   <link href="css/style.min.css" type="text/css" rel="stylesheet" media="screen,projection">
-  <!-- Custome CSS-->    
+  <!-- Custome CSS-->
   <link href="css/custom/custom.min.css" type="text/css" rel="stylesheet" media="screen,projection">
 
   <!-- INCLUDED PLUGIN CSS ON THIS PAGE -->
   <link href="js/plugins/perfect-scrollbar/perfect-scrollbar.css" type="text/css" rel="stylesheet" media="screen,projection">
- 
+
 </head>
 
 <body>
   <!-- Start Page Loading -->
   <div id="loader-wrapper">
-      <div id="loader"></div>        
+      <div id="loader"></div>
       <div class="loader-section section-left"></div>
       <div class="loader-section section-right"></div>
   </div>
@@ -51,8 +51,8 @@ include 'includes/connect.php';
         <div class="navbar-fixed">
             <nav class="navbar-color">
                 <div class="nav-wrapper">
-                    <ul class="left">                      
-                      <li><h1 class="logo-wrapper"><a href="index.php" class="brand-logo darken-1"><img src="images/materialize-logo.png" alt="logo"></a> <span class="logo-text">Logo</span></h1></li>
+                    <ul class="left">
+                      <li><h1 class="logo-wrapper"><a href="index.php" class="brand-logo darken-1"> </a> <span class="logo-text">Logo</span></h1></li>
                     </ul>
                 </div>
             </nav>
@@ -134,9 +134,9 @@ include 'includes/connect.php';
                             </div>
                         </li>
                     </ul>
-                </li>			
+                </li>
             <li class="bold"><a href="users.php" class="waves-effect waves-cyan"><i class="mdi-social-person"></i> Users</a>
-            </li>				
+            </li>
         </ul>
         <a href="#" data-activates="slide-out" class="sidebar-collapse btn-floating btn-medium waves-effect waves-light hide-on-large-only cyan"><i class="mdi-navigation-menu"></i></a>
         </aside>
@@ -166,7 +166,7 @@ include 'includes/connect.php';
           <div class="divider"></div>
           <!--editableTable-->
 <div id="work-collections" class="seaction">
-             
+
 					<?php
 					if(isset($_GET['status'])){
 						$status = $_GET['status'];
@@ -187,7 +187,7 @@ include 'includes/connect.php';
                               <i class="mdi-content-content-paste red circle"></i>
                               <span class="collection-header">Order No. '.$row['id'].'</span>
                               <p><strong>Date:</strong> '.$row['date'].'</p>
-                              <p><strong>Payment Type:</strong> '.$row['payment_type'].'</p>							  
+                              <p><strong>Payment Type:</strong> '.$row['payment_type'].'</p>
 							  <p><strong>Status:</strong> '.($deleted ? $status : '
 							  <form method="post" action="routers/edit-orders.php">
 							    <input type="hidden" value="'.$row['id'].'" name="id">
@@ -195,7 +195,7 @@ include 'includes/connect.php';
 								<option value="Yet to be delivered" '.($status=='Yet to be delivered' ? 'selected' : '').'>Yet to be delivered</option>
 								<option value="Delivered" '.($status=='Delivered' ? 'selected' : '').'>Delivered</option>
 								<option value="Cancelled by Admin" '.($status=='Cancelled by Admin' ? 'selected' : '').'>Cancelled by Admin</option>
-								<option value="Paused" '.($status=='Paused' ? 'selected' : '').'>Paused</option>								
+								<option value="Paused" '.($status=='Paused' ? 'selected' : '').'>Paused</option>
 								</select>
 							  ').'</p>
                               <a href="#" class="secondary-content"><i class="mdi-action-grade"></i></a>
@@ -203,17 +203,17 @@ include 'includes/connect.php';
 						$order_id = $row['id'];
 						$customer_id = $row['customer_id'];
 						$sql1 = mysqli_query($con, "SELECT * FROM order_details WHERE order_id = $order_id;");
-						$sql3 = mysqli_query($con, "SELECT * FROM users WHERE id = $customer_id;");
+						$sql3 = mysqli_query($con, "SELECT * FROM customer WHERE id = $customer_id;");
 							while($row3 = mysqli_fetch_array($sql3))
 							{
 							echo '<li class="collection-item">
                             <div class="row">
 							<p><strong>Name: </strong>'.$row3['name'].'</p>
 							<p><strong>Address: </strong>'.$row['address'].'</p>
-							'.($row3['contact'] == '' ? '' : '<p><strong>Contact: </strong>'.$row3['contact'].'</p>').'	
-							'.($row3['email'] == '' ? '' : '<p><strong>Email: </strong>'.$row3['email'].'</p>').'		
-							'.(!empty($row['description']) ? '<p><strong>Note: </strong>'.$row['description'].'</p>' : '').'								
-                            </li>';							
+							'.($row3['contact'] == '' ? '' : '<p><strong>Contact: </strong>'.$row3['contact'].'</p>').'
+							'.($row3['email'] == '' ? '' : '<p><strong>Email: </strong>'.$row3['email'].'</p>').'
+							'.(!empty($row['description']) ? '<p><strong>Note: </strong>'.$row['description'].'</p>' : '').'
+                            </li>';
 							}
 						while($row1 = mysqli_fetch_array($sql1))
 						{
@@ -245,10 +245,10 @@ include 'includes/connect.php';
                                             </div>
                                             <div class="col s3">
                                                 <span><strong>Rs. '.$row['total'].'</strong></span>
-                                            </div>';										
+                                            </div>';
 								if(!$deleted){
 								echo '<button class="btn waves-effect waves-light right submit" type="submit" name="action">Change Status
-                                              <i class="mdi-content-clear right"></i> 
+                                              <i class="mdi-content-clear right"></i>
 										</button>
 										</form>';
 								}
@@ -278,8 +278,8 @@ include 'includes/connect.php';
   <footer class="page-footer">
     <div class="footer-copyright">
       <div class="container">
-        <span>Copyright © 2017 <a class="grey-text text-lighten-4" href="#" target="_blank">Students</a> All rights reserved.</span>
-        <span class="right"> Design and Developed by <a class="grey-text text-lighten-4" href="#">Students</a></span>
+
+
         </div>
     </div>
   </footer>
@@ -290,15 +290,15 @@ include 'includes/connect.php';
     <!-- ================================================
     Scripts
     ================================================ -->
-    
+
     <!-- jQuery Library -->
-    <script type="text/javascript" src="js/plugins/jquery-1.11.2.min.js"></script>    
+    <script type="text/javascript" src="js/plugins/jquery-1.11.2.min.js"></script>
     <!--angularjs-->
     <script type="text/javascript" src="js/plugins/angular.min.js"></script>
     <!--materialize js-->
     <script type="text/javascript" src="js/materialize.min.js"></script>
     <!--scrollbar-->
-    <script type="text/javascript" src="js/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>       
+    <script type="text/javascript" src="js/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     <!--plugins.js - Some Specific JS codes for Plugin Settings-->
     <script type="text/javascript" src="js/plugins.min.js"></script>
     <!--custom-script.js - Add your own theme custom JS-->
@@ -312,7 +312,7 @@ include 'includes/connect.php';
 	{
 		if($_SESSION['customer_id']==session_id())
 		{
-			header("location:orders.php");		
+			header("location:orders.php");
 		}
 		else{
 			header("location:login.php");
