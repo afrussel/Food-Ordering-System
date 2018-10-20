@@ -174,7 +174,8 @@ include 'includes/connect.php';
                     </ul>
                 </li>
             <li class="bold"><a href="users.php" class="waves-effect waves-cyan"><i class="mdi-social-person"></i> Users</a>
-            </li>
+							<li class="bold"><a href="find-users.php" class="waves-effect waves-cyan"><i class="mdi-social-person"></i>Find Users</a>
+					  </li>
         </ul>
         <a href="#" data-activates="slide-out" class="sidebar-collapse btn-floating btn-medium waves-effect waves-light hide-on-large-only cyan"><i class="mdi-navigation-menu"></i></a>
         </aside>
